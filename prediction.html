@@ -5,7 +5,70 @@
   <meta charset="UTF-8">
   <title>黄金价格预测</title>
   <style>
-    body { text-align: center; font-family: Arial; margin-top: 50px; }
+    body { text-align: center; fo<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>黄金价格预测</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>黄金价格预测</h1>
+
+  <button onclick="getPrediction()">开始预测</button>
+  <button onclick="goHome()">返回首页</button>
+  <button onclick="autoTrade()">自动跟单</button>
+
+  <div id="result"></div>
+
+  <script>
+    function getPrediction() {
+      fetch("http://127.0.0.1:5000/predict")
+        .then((response) => response.json())
+        .then((data) => {
+  if (data.trend && data.suggestion && data.close_prices) {
+    document.getElementById("result").innerHTML = `
+      <p><strong>预测趋势：</strong> ${data.trend}</p>
+      <p><strong>操作建议：</strong> ${data.suggestion}</p>
+      <p><strong>最近收盘价：</strong> ${data.close_prices.join(", ")}</p>
+    `;
+  } else {
+    document.getElementById("result").innerText = "返回的数据格式不完整";
+  }
+})
+        .catch((error) => {
+          document.getElementById("result").innerText = "获取预测失败，请检查后端是否启动。";
+          console.error("错误:", error);
+        });
+    }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    function autoTrade() {
+      alert("自动跟单功能暂未上线，敬请期待！");
+    }
+  </script>
+</body>
+</html>
+nt-family: Arial; margin-top: 50px; }
     .result { margin: 20px; font-size: 20px; }
     button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
   </style>
