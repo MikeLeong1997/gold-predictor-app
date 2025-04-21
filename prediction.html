@@ -20,22 +20,18 @@
   <button onclick="autoTrade()">自动跟单</button>
 
   <script>
-    function goBack() {
-      window.location.href = "index.html";
+    window.onload = function () {
+      fetch('https://gold-backend-6986.onrender.com')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("trend").innerText = "预测趋势：" + data.trend;
+          document.getElementById("timing").innerText = "预测时间：" + data.timing;
+        })
+        .catch(err => {
+          document.getElementById("trend").innerText = "预测趋势：出错了";
+          document.getElementById("timing").innerText = "预测时间：出错了";
+        });
     }
-
-    function autoTrade() {
-      alert("自动跟单功能暂未开启，敬请期待！");
-    }
-
-    // 模拟预测结果（后期我们会接AI模型）
-    window.onload = function() {
-      const trend = Math.random() > 0.5 ? "上涨 📈" : "下跌 📉";
-      const timing = Math.random() > 0.5 ? "建议立即买入 🛒" : "建议观望或撤出 🧯";
-
-      document.getElementById("trend").innerText = "预测趋势：" + trend;
-      document.getElementById("timing").innerText = "预测时间：" + timing;
-    }
-  </script>
-</body>
+    </script>
+    </body>
 </html>
