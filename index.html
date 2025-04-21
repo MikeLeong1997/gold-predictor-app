@@ -1,41 +1,16 @@
-<!-- prediction.html -->
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>黄金价格预测</title>
+  <title>黄金价格预测走向小应用</title>
   <style>
-    body { text-align: center; font-family: Arial; margin-top: 50px; }
-    .result { margin: 20px; font-size: 20px; }
-    button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
+    body { text-align: center; font-family: Arial; margin-top: 100px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
   </style>
 </head>
 <body>
-  <h1>黄金价格预测</h1>
-  
-  <div class="result" id="trend">预测趋势：正在分析...</div>
-  <div class="result" id="timing">预测时间：正在分析...</div>
-
-  <button onclick="goBack()">返回首页</button>
-  <button onclick="autoTrade()">自动跟单</button>
-
-  <script>
-    function goBack() {
-      window.location.href = "index.html";
-    }
-
-    function autoTrade() {
-      alert("自动跟单功能暂未开启，敬请期待！");
-    }
-
-    // 模拟预测结果（后期我们会接AI模型）
-    window.onload = function() {
-      const trend = Math.random() > 0.5 ? "上涨 📈" : "下跌 📉";
-      const timing = Math.random() > 0.5 ? "建议立即买入 🛒" : "建议观望或撤出 🧯";
-
-      document.getElementById("trend").innerText = "预测趋势：" + trend;
-      document.getElementById("timing").innerText = "预测时间：" + timing;
-    }
-  </script>
+  <h1>黄金价格预测走向小应用</h1>
+  <button onclick="location.href='prediction.html'">开始测试</button>
 </body>
 </html>
