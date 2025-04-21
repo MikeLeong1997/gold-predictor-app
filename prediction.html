@@ -1,11 +1,4 @@
-<!-- prediction.html -->
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <title>黄金价格预测</title>
-  <style>
-    body { text-align: center; fo<!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
@@ -67,34 +60,4 @@
     }
   </script>
 </body>
-</html>
-nt-family: Arial; margin-top: 50px; }
-    .result { margin: 20px; font-size: 20px; }
-    button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
-  </style>
-</head>
-<body>
-  <h1>黄金价格预测</h1>
-  
-  <div class="result" id="trend">预测趋势：正在分析...</div>
-  <div class="result" id="timing">预测时间：正在分析...</div>
-
-  <button onclick="goBack()">返回首页</button>
-  <button onclick="autoTrade()">自动跟单</button>
-
-  <script>
-    window.onload = function () {
-      fetch('https://gold-backend-6986.onrender.com')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("trend").innerText = "预测趋势：" + data.trend;
-          document.getElementById("timing").innerText = "预测时间：" + data.timing;
-        })
-        .catch(err => {
-          document.getElementById("trend").innerText = "预测趋势：出错了";
-          document.getElementById("timing").innerText = "预测时间：出错了";
-        });
-    }
-    </script>
-    </body>
 </html>
