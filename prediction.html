@@ -29,7 +29,8 @@ button {
   <button onclick="getPrediction()">开始预测</button>
   <button onclick="goHome()">返回首页</button>
   <button onclick="autoTrade()">自动跟单</button>
-
+  <p id="auto-trade-result">自动下单结果：加载中...</p>
+  
   <div id="result"></div>
   <div id="result" style="margin-top: 20px;"></div>
   <script>
@@ -68,8 +69,16 @@ button {
     }
   
     function autoTrade() {
-      alert("自动跟单功能暂未上线，敬请期待！");
-    }
+  fetch('https://gold-backend-ayts.onrender.com/auto_trade')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("auto-trade-result").innerText = `自动下单结果：${data.action}`;
+    })
+    .catch(error => {
+      console.error("自动下单失败：", error);
+      document.getElementById("auto-trade-result").innerText = `❌ 获取失败`;
+    });
+}
   
     window.onload = getPrediction;
   </script>
